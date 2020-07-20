@@ -1,6 +1,8 @@
 package com.zhaoning.controller;
 
 
+import com.zhaoning.common.lang.Result;
+import com.zhaoning.entity.User;
 import com.zhaoning.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,7 +27,8 @@ public class UserController {
 
 
     @GetMapping("/index")
-    public Object index(){
-        return userService.getById(1L);
+    public Result index(){
+        User user = userService.getById(1L);
+        return Result.succ(200,"操作成功",user);
     }
 }
